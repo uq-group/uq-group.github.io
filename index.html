@@ -1,230 +1,584 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hadi Meidani - Uncertainty Quantification Group</title>
+    <meta name="description" content="Uncertainty Quantification research group directed by Hadi Meidani at UIUC">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .logo-section {
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            max-width: 150px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .header h2 {
+            font-size: 1.3em;
+            color: #7f8c8d;
+            font-weight: normal;
+            margin-bottom: 20px;
+        }
+
+        .bio-content {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+
+        .bio-photo {
+            flex-shrink: 0;
+            order: -1;
+        }
+
+        .bio-text {
+            flex: 1;
+        }
+
+        .profile-photo {
+            width: 200px;
+            height: 250px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 3px solid #3498db;
+        }
+
+        .contact-links {
+            margin-top: 15px;
+        }
+
+        .contact-links a {
+            color: #ff6b35;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 0.95em;
+        }
+
+        .contact-links a:hover {
+            text-decoration: underline;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            font-size: 1.4em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #bdc3c7;
+            padding-bottom: 5px;
+        }
+
+        .section h3 {
+            font-size: 1.2em;
+            color: #34495e;
+            margin: 20px 0 10px 0;
+        }
+
+        .section p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .section ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .section li {
+            margin-bottom: 0;
+        }
+
+        .section a {
+            color: #ff6b35;
+            text-decoration: none;
+        }
+
+        .section a:hover {
+            text-decoration: underline;
+        }
+
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .research-card {
+            text-align: center;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            transition: transform 0.2s ease;
+        }
+
+        .research-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .research-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            border: 2px solid #e0e0e0;
+            margin-bottom: 15px;
+        }
+
+        .research-card h3 {
+            color: #2c3e50;
+            font-size: 1.1em;
+            margin: 0;
+        }
+
+        .publications {
+            margin-top: 20px;
+        }
+
+        .publication {
+            margin-bottom: 15px;
+            padding: 12px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+
+        .publication-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        .publication-authors {
+            color: #7f8c8d;
+            margin-bottom: 0;
+        }
+
+        .publication-venue {
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 0;
+        }
 
 
+        .news-item {
+            margin-bottom: 15px;
+            padding-left: 20px;
+            border-left: 3px solid #3498db;
+        }
 
-<html>
-	<head>
-		<title>UQ Group - Hadi Meidani</title>
-		<meta name="google-site-verification" content="..."> 
-		<meta charset="utf-8" />
-		<meta name="description" content="The uncertainty quantification (UQ) research group directed by Hadi Meidani." />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+        .scholar-widget {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-86401475-2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+        .scholar-widget iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+            border-radius: 5px;
+        }
 
-  gtag('config', 'UA-86401475-2');
-</script>
+        .news-date {
+            color: #7f8c8d;
+            font-weight: bold;
+        }
 
-	</head>
-	<body class="is-preload">
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e0e0;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
 
-		<!-- Page Wrapper -->
-			<div id="page-wrapper">
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .bio-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .bio-photo {
+                align-self: center;
+            }
+            
+            .research-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .contact-links a {
+                display: block;
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo-section">
+            <img src="images/uqlogotransp.png" alt="UQ Group Logo" class="logo">
+            <h1>Uncertainty Quantification Group</h1>
+            <h2>Scientific Machine Learning</h2>
+        </div>
+        <div class="contact-links">
+            <a href="mailto:meidani@illinois.edu">Email</a>
+            <a href="https://scholar.google.com/citations?user=v_gKvdwAAAAJ">Google Scholar</a>
+            <a href="https://github.com/uq-group/codes">Codes</a>
+        </div>
+    </div>
 
-				<!-- Header -->
-					<header id="header" class="alt">
-						<h1><a href="index.html">Uncertainty Quantification Group</a></h1>
-						<nav>
-							<a href="#menu">Menu</a>
-						</nav>
-					</header>
+    <div class="section">
+        <h2>Hadi Meidani</h2>
+        <div class="bio-content">
+            <div class="bio-text">
+                
+                <p>I am an Associate Professor in the Department of Civil and Environmental Engineering, and Department of Biomedical & Translational Sciences  at the University of Illinois at Urbana-Champaign. I got my Ph.D. in Civil Engineering from USC under the advice of <a href=" https://viterbi.usc.edu/directory/faculty/Ghanem/Roger">
+					Prof. Roger Ghanem</a>. I also got a M.Sc. in Electrical Engineering from USC, a M.S. in Structural Engineering from Sharif University of Technology and a B.S in Civil Engineering from K.N. Toosi University of Technology. </p>
 
-				<!-- Menu -->
-					<nav id="menu">
-						<div class="inner">
-							<h2>Menu</h2>
-							<ul class="links">
-								<li><a href="index.html">Home</a></li>
-								<!-- <li><a href="publication.html">Publications</a></li> -->
-								<li><a href="members.html">Members</a></li>
-							</ul>
-							<a href="#" class="close">Close</a>
-						</div>
-					</nav>
-
-				<!-- Banner -->
-					<section id="banner">
-						<div class="inner">
-							<a href="#" class="image"><img src="images/uqlogotransp.png" alt="" /></a>
-							<h2>Uncertainty Quantification Group</h2>
-							<h3>Scientific machine Learning for engineering systems</h3>
-							<h3>Director: Hadi Meidani</h3>
-							<h3>  <font color="cyan"> <a href="https://scholar.google.com/citations?user=v_gKvdwAAAAJ">Google scholar page</a></font> </h3>
-						</div>
-					</section>
-
-				<!-- Wrapper -->
-					<section id="wrapper">
-
-						<!-- One -->
-
-							<section id="three" class="wrapper spotlight style3">
-								<div class="inner">
-									<a href="#" class="image"><img src="images/dnn.jpg" alt="" /></a>
-									<div class="content">
-										<h2 class="major">Physics-informed machine learning</h2>
-										<!-- <p>Current/past projects: <br> -->
-										&#8226 Physics-informed geometry-aware neural operators <font color="cyan"> <a href="https://arxiv.org/abs/2408.01600">Link</a></font> <br>
-										&#8226 Physics-informed variational autoencoders for solving stochastic differential equations<br>
-										&#8226 Enhanced training algorithms for physics-informed neural networks
-										</p>
-										<!-- <a href="publication.html" class="special">Learn more</a> -->
-									</div>
-								</div>
-							</section>
-						<!-- Two -->
-							<section id="two" class="wrapper spotlight style1">
-								<div class="inner">
-									<a href="#" class="image"><img src="images/opt.jpg" alt="" /></a>
-									<div class="content">
-										<h2 class="major">Prediction and optimization using AI/ML</h2>
-										<!-- <p>Current/past projects: <br> -->
-										&#8226 Enhanced lung cancer prediction using AI <font color="cyan"> <a href="https://www.medrxiv.org/content/10.1101/2024.10.07.24315011v1">Link</a></font> <br>
-										&#8226 Mesh-based GNNs for accelerated design <font color="cyan"> <a href="https://www.nature.com/articles/s41598-024-53185-y">Link</a></font> <br>
-										&#8226 Structural design under uncertainty with variational autoencoders <font color="cyan"> <a href="https://www.dl.begellhouse.com/journals/558048804a15188a,6ea623526214d90d,32ea8816711ab229.html">Link</a></font><br>	
-										&#8226 Computational control of power systems with uncertain distributed energy sources<br>
-										</p>
-										<!-- <a href="publication.html" class="special">Learn more</a> -->
-									</div>
-								</div>
-							</section>
-
-						<!-- Three -->
-
-							<section id="one" class="wrapper spotlight style1">
-								<div class="inner">
-									<a href="#" class="image"><img src="images/smartcities.jpg" alt="" /></a>
-									<div class="content">
-										<h2 class="major">Predictive analytics for infrastructure systems</h2>
-										<!-- <p>Current/past projects: <br> -->
-										&#8226 Graph neural networks for transportation network modeling<br>   
-										&#8226 Resilience assessment of mobility networks using graph neural networks<br>
-											&#8226 Explainable-AI for long-term traffic prediction<br>
-										  &#8226 Post-disaster online prediction of traffic conditions<br>  
-										<!-- <a href="publication.html" class="special">Learn more</a> -->
-									</div>
-								</div>
-							</section>
-
-						<!-- Three -->
-							<section id="three" class="wrapper spotlight style3">
-								<div class="inner">
-									<a href="#" class="image"><img src="images/cav.jpg" alt="" /></a>
-									<div class="content">
-										<h2 class="major">Intelligent transportation systems</h2>
-										<!-- <p>Current/past projects: <br> -->
-										&#8226 Multifidelity traffic estimation using data from multiple sources<br>
-										&#8226 Efficient data collection algorithm for connective vehicles with precision guarantees
-										</p>
-										<!-- <a href="publication.html" class="special">Learn more</a> -->
-									</div>
-								</div>
-							</section>
+					
+					<p> Our research focuses on scientific machine learning, uncertainty quantification, and surrogate-based modeling. Our group specializes in developing advanced computational methods that combine the power of machine learning with the rigor of physics-based modeling. Our goal is to make engineering systems more reliable, efficient, and resilient in the face of uncertainty. Applications of our work include engineering design, digital twins, biomedical problems, and infrastructure and structures.</p>
 
 
-
-
-
-						<!-- Four -->
-							<section id="four" class="wrapper alt style1">
-								<div class="inner">
-									
-									<p><h2 class="major">Available Research Assistant Position</h2>
-									Our <a href="members.html">group </a> has several openings in Fall 2025 for PhD students interested in machine learning and its applications on the modeling and optimization of engineering systems.
-									Higher consideration is given to those who have background in deep learning, numerical methods,
-									and probability and statistics and have excellent programming skills. Interested students should
-									send an email to meidani (at) illinois (dot) edu and attach their CV including their graduate coursework.
-									</p>
-									
-									<h2 class="major">News</h2>
-
-
-
-<p> 
-
-
-	
-<li>[Sep 2023] Our collaborative project with Fermilab on using graph neural networks for neutrino experiments are funded. 
-
-<li>[Sep 2023] Our submission to ICMLA 2023 Conference on Graph Pyramid Autoformer for Long-Term Traffic Forecasting has been accepted. This was a collaboration with Argonne National Lab and Lawrence Berkeley National Lab. Congrats to Vincent for leading the effort!
-
-<li>[Aug 2023] Vincent will present two papers on traffic prediction at 2023 INFORMS Annual Meeting. 
-	
-<li>[Oct 2022] Our submission to NeurIPS Workshop on Machine Learning and the Physical Sciences has been accepted. Congrats to Rini Gladstone and Mohammad Nabian!
-	
-<li>[Oct 2022] Our group is invited to present at Nvidia's introductory webinar on Physics-ML <a href="https://info.nvidia.com/developer-physics-informed-machine-learning-with-modulus-webinar.html">Link to the free webinar</a>. . Rini will present our collaborative work with Nvidia on how to enforce exact boundary conditions for PINNs. 
-	
-<li>[May 2022] Rini is selected as a Research Scientist Intern at Meta to work on physics-based machine learning research! 	
-	
-<li>[May 2022] Vincent is selected as a Givens Associate in the Mathmatics and Computer Science Division at Argonne National Labs, and will spend a summer there doing research on long-term traffic prediction. 	
-
-<li>[Jun 2020] Negin has accepted a Tenure-track Assistant Professor position in the Department of Engineering Systems and Environment at the University of Virginia. 
-
-<li> [May 2020] Dr. Meidani has received a research grant to investigate optimal pooled testing strategies for COVID-19 community screening. 
-
-<li>[Apr 2020] Negin's first author paper on fast surrogate-based voltage control for distribution energy systems have been published on IEEE Access.
-
-<li>[Feb 2020] Our team won the First Prize in the Data Challenge on Urban Travel Time, Speed, and Reliability at the 2020 TRB Annual Meeting. Congratulations to our graduate students Xiyue and Mohammad! 
-
-<li>[May 2019] Mohammad Amin Nabian has been awarded the Dissertation Completion Fellowship from the Graduate College. Congratulations to Mohammad on this prestigious recognition.
-
-<li>[Apr 2019] Mohammad Amin Nabian has been selected by UIUC College of Engineering as one of the Mavis Future Faculty Fellows (MF3) for the 2019-2020 academic year. More on the fellowship program can be
-found <a href="http://publish.illinois.edu/engr-mavis/">here</a>. Congrats to Mohammad!<br>
-
-<li>[Mar 2019] Negin Alemazkoor has been selected as one of the <a href="https://risingstars.ices.utexas.edu">Rising Stars</a> in Computational and Data Sciences and will attend an event sponsored by the University of Texas at Austin and Sandia National Labs in April 2019. Congratulations to Negin!<br>
-
-<li>[Nov 2018] Our group’s entry to the 2018 INFORMS Rail Problem Competition won the 2nd Place Prize. Congratulations to Mohammad and Negin. <a href="https://cee.illinois.edu/news/cee-team-places-second-international-competition">Full story</a>.<br>
-
-<li>[Aug 2018] Our journal paper on preconditioning for improved compressive sampling of polynomial surrogates is accepted for publication in Computational Methods in Applied Mechanics and Engineering. Congratulations to Negin.<br>
-
-<li>[Jul 2018] Our conference paper on recursive data-driven prediction of traffic flow with faulty sensors is accepted for presentation at the 2018 IEEE International Conference on Intelligent Transportation Systems (IEEE ITSC 2018). Congratulations to Negin and Shiyu.<br>
-
-<li>[Jul 2018] Our 2018 INFORMS Annual Meeting submission on efficient collection of connected vehicle data with precision guarantees is accepted. Congratulations to Negin.<br>
-
-<li>[Feb 2018] Dr. Meidani receives NSF CAREER Award to study fast and accurate software tools for interdependent infrastructure systems. <a href="https://cee.illinois.edu/news/meidani-wins-nsf-career-award">Full story</a>.<br>
-</li> </p>
-								</div>
-							</section>
-
-					</section>
-
-				<!-- Footer -->
-					<section id="footer">
-						<div class="inner">
-							<h2 class="major">Get in touch</h2>
-														<ul class="contact">
-								<li class="fa-home">
-									Hadi Meidani<br />
-									1211 Newmark Lab<br />
-									205 N Mathews Ave<br />
-									Urbana, IL 61801
-								</li>
-								<li class="fa-phone">(217) 300-0828</li>
-								<li class="fa-envelope"><a href="mailto:meidani@illinois.edu">meidani (at) illinois (dot) edu</a></li>
-								<li class="fa-twitter"><a href="https://twitter.com/hadimeidani">twitter.com/hadimeidani</a></li>
-							</ul>
-							<ul class="copyright">
-								<li>&copy; Uncertainty Quantification Group. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-							</ul>
-						</div>
-					</section>
+                
+				<p><strong>Prospective Students:</strong> I am looking for motivated students to work on cutting-edge research in scientific machine learning and uncertainty quantification. If you are interested in working with me, please apply through the CEE department and mention my name in your application. You can also email me directly with your CV and research interests.</p>
 
 			</div>
+            <div class="bio-photo">
+                <img src="images/hadi_meidani.jpg" alt="Hadi Meidani" class="profile-photo">
+            </div>
+        </div>
+    </div>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+    <div class="section">
+        <h2>Research Thrusts</h2>
+        <p>We believe that the future of engineering lies in the seamless integration of data-driven methods with physics-based understanding. Our group seeks to develop methods that are not only computationally efficient but also physically meaningful and interpretable.</p>
+        
+        <div class="research-grid">
+            <div class="research-card">
+                <img src="images/dnn.jpg" alt="Deep Neural Networks" class="research-img">
+                <h3>Physics-based Machine Learning</h3>
+            </div>
+            <div class="research-card">
+                <img src="images/drivAer.jpg" alt="Engineering Design" class="research-img">
+                <h3>AI for Design</h3>
+            </div>
+            <div class="research-card">
+                <img src="images/smartcities.jpg" alt="Smart Cities" class="research-img">
+                <h3>Smart Infrastructure Systems</h3>
+            </div>
+        </div>
+    </div>
 
-	</body>
+
+    <div class="section">
+        <h2>Teaching</h2>
+        <p>I am the Founding Director of the <a href="https://cee.illinois.edu/academics/graduate-programs/AI-CEE-MS-Track"> AI+CEE M.S. Track</a> and
+			 the Chair of the <a href="https://cee.illinois.edu/academics/graduate-programs/Evolving-AI-CEE">AI+CEE Task Force</a>. I have taught the following courses:</p>
+        
+        <ul>
+            <li>CEE 498MLC: Machine Learning in CEE</li>
+            <li>CEE 598GPT: Scientific Computing with LLMs</li>
+            <li>CEE 598UQ: Uncertainty Quantification</li>
+            <li>CEE 201: Systems Engineering and Economics</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Latest Publications</h2>
+        <div class="publications">
+            <div class="publication">
+                <div class="publication-title">
+                    <a href="https://www.sciencedirect.com/science/article/pii/S0045782525001230">Toward signed distance function based metamaterial design: Neural operator transformer for forward prediction and diffusion model for inverse design</a>
+                </div>
+                <div class="publication-info">
+                    <span class="publication-authors">Liu, Qibang; Koric, Seid; Abueidda, Diab; Meidani, Hadi; Geubelle, Philippe</span> - 
+                    <span class="publication-venue">Computer Methods in Applied Mechanics and Engineering, 2025</span>
+                </div>
+            </div>
+            
+            <div class="publication">
+                <div class="publication-title">
+                    <a href="https://www.sciencedirect.com/science/article/pii/S0045782525001230">Physics-Informed Geometry-Aware Neural Operator</a>
+                </div>
+                <div class="publication-info">
+                    <span class="publication-authors">Zhong, Weiheng; Meidani, Hadi</span> - 
+                    <span class="publication-venue">Computer Methods in Applied Mechanics and Engineering, 2025</span>
+                </div>
+            </div>
+            
+            <div class="publication">
+                <div class="publication-title">
+                    <a href="https://www.sciencedirect.com/science/article/pii/S0045782524001230">Physics-informed discretization-independent deep compositional operator network</a>
+                </div>
+                <div class="publication-info">
+                    <span class="publication-authors">Zhong, Weiheng; Meidani, Hadi</span> - 
+                    <span class="publication-venue">Computer Methods in Applied Mechanics and Engineering, 2024</span>
+                </div>
+            </div>
+            
+            <div class="publication">
+                <div class="publication-title">
+                    <a href="https://www.nature.com/articles/s41598-024-53185-y">Mesh-based GNN surrogates for time-independent PDEs</a>
+                </div>
+                <div class="publication-info">
+                    <span class="publication-authors">Gladstone, Rini Jasmine; Rahmani, Helia; Suryakumar, Vishvas; Meidani, Hadi; D'Elia, Marta; Zareei, Ahmad</span> - 
+                    <span class="publication-venue">Scientific Reports, 2024</span>
+                </div>
+            </div>
+            
+            <div class="publication">
+                <div class="publication-title">
+                    <a href="https://www.medrxiv.org/content/10.1101/2024.10.07.24315011v1">A hybrid computer vision model to predict lung cancer in diverse populations</a>
+                </div>
+                <div class="publication-info">
+                    <span class="publication-authors">Zakkar, Abdul J; Perwaiz, Nazia; Zhong, Weiheng; Krule, Alex; Burrage-Burton, Mason; Narra, Vijeth; Yousef, Farah; Kim, Daniel; Gadi, Vijayakrishna K; Korpics, Mark C</span> - 
+                    <span class="publication-venue">medRxiv, 2024</span>
+                </div>
+            </div>
+            
+            <div class="publication">
+                <div class="publication-title">
+                    <a href="https://www.sciencedirect.com/science/article/pii/S0045782524001230">End-to-end heterogeneous graph neural networks for traffic assignment</a>
+                </div>
+                <div class="publication-info">
+                    <span class="publication-authors">Liu, Tong; Meidani, Hadi</span> - 
+                    <span class="publication-venue">Transportation Research Part C: Emerging Technologies, 2024</span>
+                </div>
+            </div>
+            
+            <div class="publication">
+                <div class="publication-title">
+                    <a href="https://www.sciencedirect.com/science/article/pii/S0045782524001230">Neural network surrogate models for aerodynamic analysis in truck platoons: Implications on autonomous freight delivery</a>
+                </div>
+                <div class="publication-info">
+                    <span class="publication-authors">Liu, Tong; Meidani, Hadi</span> - 
+                    <span class="publication-venue">International Journal of Transportation Science and Technology, 2024</span>
+                </div>
+            </div>
+            
+            <div class="publication">
+                <div class="publication-title">
+                    <a href="https://www.sciencedirect.com/science/article/pii/S0045782524001230">Graph Neural Network Surrogate for Seismic Reliability Analysis of Highway Bridge Systems</a>
+                </div>
+                <div class="publication-info">
+                    <span class="publication-authors">Liu, Tong; Meidani, Hadi</span> - 
+                    <span class="publication-venue">Journal of Infrastructure Systems, 2024</span>
+                </div>
+            </div>
+            
+            <div class="publication">
+                <div class="publication-title">
+                    <a href="https://www.sciencedirect.com/science/article/pii/S0045782524001230">Physics-Informed Neural Networks for System Identification of Structural Systems with a Multiphysics Damping Model</a>
+                </div>
+                <div class="publication-info">
+                    <span class="publication-authors">Liu, Tong; Meidani, Hadi</span> - 
+                    <span class="publication-venue">Journal of Engineering Mechanics, 2023</span>
+                </div>
+            </div>
+            
+            <div class="publication">
+                <div class="publication-title">
+                    <a href="https://www.sciencedirect.com/science/article/pii/S0045782524001230">PI-VAE: Physics-Informed Variational Auto-Encoder for stochastic differential equations</a>
+                </div>
+                <div class="publication-info">
+                    <span class="publication-authors">Zhong, Weiheng; Meidani, Hadi</span> - 
+                    <span class="publication-venue">Computer Methods in Applied Mechanics and Engineering, 2023</span>
+                </div>
+            </div>
+            
+            <div class="publication">
+                <div class="publication-title">
+                    <a href="https://www.sciencedirect.com/science/article/pii/S0045782524001230">A Data-Driven Multi-Fidelity Approach for Traffic State Estimation Using Data From Multiple Sources</a>
+                </div>
+                <div class="publication-info">
+                    <span class="publication-authors">Alemazkoor, Negin; Meidani, Hadi</span> - 
+                    <span class="publication-venue">IEEE Access, 2021</span>
+                </div>
+            </div>
+            
+            <div class="publication">
+                <div class="publication-title">
+                    <a href="https://www.sciencedirect.com/science/article/pii/S0045782524001230">Efficient training of physics‐informed neural networks via importance sampling</a>
+                </div>
+                <div class="publication-info">
+                    <span class="publication-authors">Nabian, Mohammad Amin; Gladstone, Rini Jasmine; Meidani, Hadi</span> - 
+                    <span class="publication-venue">Computer‐Aided Civil and Infrastructure Engineering, 2021</span>
+                </div>
+            </div>
+            
+            <div class="publication">
+                <div class="publication-title">
+                    <a href="https://www.sciencedirect.com/science/article/pii/S0045782524001230">Fast Probabilistic Voltage Control for Distribution Networks With Distributed Generation Using Polynomial Surrogates</a>
+                </div>
+                <div class="publication-info">
+                    <span class="publication-authors">Alemazkoor, Negin; Meidani, Hadi</span> - 
+                    <span class="publication-venue">IEEE Access, 2020</span>
+                </div>
+            </div>
+            
+            <div class="publication">
+                <div class="publication-title">
+                    <a href="https://www.sciencedirect.com/science/article/pii/S0045782524001230">Physics-driven regularization of deep neural networks for enhanced engineering design and analysis</a>
+                </div>
+                <div class="publication-info">
+                    <span class="publication-authors">Nabian, Mohammad Amin; Meidani, Hadi</span> - 
+                    <span class="publication-venue">Journal of Computing and Information Science in Engineering, 2020</span>
+                </div>
+            </div>
+        </div>
+        <p style="margin-top: 20px; text-align: center;">
+            <a href="https://scholar.google.com/citations?user=v_gKvdwAAAAJ">View complete publication list on Google Scholar →</a>
+        </p>
+    </div>
+
+
+    <div class="section">
+        <h2>Research Group</h2>
+        
+        <h3>Current Members</h3>
+        <ul>
+            <li>Vincent Zhong (PhD student)</li>
+            <li>Mingyue Yu (PhD student)</li>
+            <li>Mohammad Hossein Kazemi (PhD student)</li>
+            <li>JayaPraneeth Rangamudri (MS student)</li>
+            <li>Yufan Zhang (MS student)</li>
+            <li>Warren Jidjana (Undergraduate researcher)</li>
+            <li>Luke Hower (Undergraduate researcher)</li>
+        </ul>
+        
+        <h3>Former Graduate Students</h3>
+        <ul>
+            <li>Rini Jasmine Gladstone (Now at Bayer)</li>
+            <li>Tong Liu (Now at Uber)</li>
+            <li>Vitor Ferreira Grizzi (Now at Argonne National Lab)</li>
+            <li><a href="https://mnabian.github.io">Mohammad Amin Nabian</a> (PhD, 2015-2020. Senior Software Engineer, AI-HPC, NVIDIA)</li>
+            <li>Xiyue Li (MS, 2018-2019. Transportation Engineering at Champaign County Regional Planning Commission)</li>
+            <li><a href="https://nalemazkoor.wixsite.com/negin">Negin Alemazkoor</a> (PhD, 2014-2019. Assistant Professor at University of Virginia)</li>
+            <li>Xu Wu (PhD co-advisee, 2015-2017. Assistant Professor at NCSU)</li>
+            <li>Yiyuan Lei (MS, 2018-2019. PhD Student at NYU)</li>
+            <li>Shiyu Wang (MS, 2017-2018. Industry in China)</li>
+            <li>Yogesh Bhandari (MS co-advisee, 2017)</li>
+            <li>Neelotpal Shukla (MS, 2015-2017. Senior Software Engineer at Morningstar)</li>
+            <li>Shengliang Dai (MS co-advisee, 2016)</li>
+        </ul>
+        
+        <h3>Former Undergraduate Students</h3>
+        <ul>
+            <li>Bora Ozaltun</li>
+            <li>Aliaa Taha</li>
+            <li>Jamil Jamil</li>
+            <li>Radha Avudaiappan</li>
+            <li>Deepak Katariya</li>
+            <li>Nina Trousdale</li>
+        </ul>
+    </div>
+
+    <!-- <div class="section">
+        <h2>News</h2>
+        <div class="news-item">
+            <span class="news-date">Sep 2023:</span> Our collaborative project with Fermilab on using graph neural networks for neutrino experiments is funded.
+        </div>
+        
+        <div class="news-item">
+            <span class="news-date">Sep 2023:</span> Our submission to ICMLA 2023 Conference on Graph Pyramid Autoformer for Long-Term Traffic Forecasting has been accepted. This was a collaboration with Argonne National Lab and Lawrence Berkeley National Lab.
+        </div>
+        
+        <div class="news-item">
+            <span class="news-date">Aug 2023:</span> Vincent will present two papers on traffic prediction at 2023 INFORMS Annual Meeting.
+        </div>
+        
+        <div class="news-item">
+            <span class="news-date">Oct 2022:</span> Our submission to NeurIPS Workshop on Machine Learning and the Physical Sciences has been accepted.
+        </div>
+        
+        <div class="news-item">
+            <span class="news-date">May 2022:</span> Rini is selected as a Research Scientist Intern at Meta to work on physics-based machine learning research!
+        </div>
+        
+        <div class="news-item">
+            <span class="news-date">Feb 2020:</span> Our team won the First Prize in the Data Challenge on Urban Travel Time, Speed, and Reliability at the 2020 TRB Annual Meeting.
+        </div>
+        
+        <div class="news-item">
+            <span class="news-date">Feb 2018:</span> Dr. Meidani receives NSF CAREER Award to study fast and accurate software tools for interdependent infrastructure systems.
+        </div>
+    </div> -->
+
+    <div class="section">
+        <h2>Contact</h2>
+        <p>
+            <strong>Hadi Meidani</strong><br>
+            Associate Professor<br>
+            Department of Civil and Environmental Engineering<br>
+            University of Illinois at Urbana-Champaign<br>
+            1211 Newmark Lab, 205 N Mathews Ave<br>
+            Urbana, IL 61801<br>
+            <br>
+            Email: meidani@illinois.edu<br>
+            Phone: (217) 300-0828
+        </p>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Uncertainty Quantification Group. All rights reserved.</p>
+    </div>
+</body>
 </html>
