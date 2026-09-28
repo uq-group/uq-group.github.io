@@ -1,157 +1,445 @@
-<!DOCTYPE HTML>
- 
-<html>
-	<head>
-		<title>UQ Group - Hadi Meidani: Members</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<meta name="description" content="The members of the uncertainty quantification (UQ) group directed by Hadi Meidani" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>People - Computational Intelligence for Engineering Lab (CIEL)</title>
+    <meta name="description" content="Current members and alumni of the Computational Intelligence for Engineering Lab, directed by Hadi Meidani at UIUC.">
+    <link rel="icon" type="image/svg+xml" href="images/ciel2-mark.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-86401475-2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  gtag('config', 'UA-86401475-2');
-</script>
+        :root {
+            --bg: #FAFAF7;
+            --surface: #FFFFFF;
+            --ink: #16181D;
+            --ink-2: #3A3F47;
+            --muted: #6B7280;
+            --line: #E7E5DF;
+            --accent: #FF6B35;
+            --accent-text: #C2410C;
+            --mono: 'JetBrains Mono', ui-monospace, monospace;
+            --content-scale: 0.7;   /* size of everything below the nav bar; 1 = original */
+            --content-font-scale: 1.5;   /* extra text size on top of --content-scale; figures and spacing unaffected */
+        }
 
+        html { scroll-behavior: smooth; }
 
-	</head>
-	<body class="is-preload">
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--ink-2);
+            background-color: var(--bg);
+            position: relative;
+        }
 
-		<!-- Page Wrapper -->
-			<div id="page-wrapper">
+        /* Recurring brand motif: faint grid behind all content, inverted for the light page */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background-image:
+                radial-gradient(circle at 1px 1px, rgba(22,24,29,0.09) 1px, transparent 0),
+                linear-gradient(rgba(22,24,29,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(22,24,29,0.03) 1px, transparent 1px);
+            background-size: 46px 46px, 46px 46px, 46px 46px;
+            mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, #000 40%, transparent 100%);
+            -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, #000 40%, transparent 100%);
+        }
 
-				<!-- Header -->
-					<header id="header">
-						<h1><a href="index.html">Uncertainty Quantification Group</a></h1>
-						<nav>
-							<a href="#menu">Menu</a>
-						</nav>
-					</header>
+        .navbar, .section, .page-header, .footer { position: relative; z-index: 1; }
 
-				<!-- Menu -->
-					<nav id="menu">
-						<div class="inner">
-							<h2>Menu</h2>
-							<ul class="links">
-								<li><a href="index.html">Home</a></li>
-								<li><a href="publication.html">Publications</a></li>
-								<li><a href="members.html">Members</a></li>
-							</ul>
-							<a href="#" class="close">Close</a>
-						</div>
-					</nav>
+        a { color: var(--accent-text); text-decoration: none; }
+        a:hover { text-decoration: underline; }
 
-				<!-- Wrapper -->
-					<section id="wrapper">
-						<header>
-							<div class="inner">
-<a href="#" class="image"><img src="images/uqlogotransp.png" alt="" /></a>
-								<h2>Uncertainty Quantification Group</h2>
-								<h3>Group members</h3>
-							</div>
-						</header>
+        .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
 
-						<!-- Content -->
-							<div class="wrapper">
-								<div class="inner">
+        /* ---------- Nav ---------- */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(250,250,247,0.88);
+            backdrop-filter: saturate(180%) blur(10px);
+            border-bottom: 1px solid var(--line);
+        }
 
-									<h3 class="major">Hadi Meidani (Faculty)</h3>
-									<img  style="padding: 0 15px; float: left;" src="images/meidani.jpg" alt="" align="left" width="160" hspace=”20” vspace=”20”  />
-									<p>Dr. Meidani earned his Ph.D. in Civil Engineering, together with a M.S.
-									in Electrical Engineering  from the University of Southern California (2012).
-									After Ph.D. graduation, he was a Postdoctoral Scholar in the Department of
-									Aerospace and Mechanical Engineering at USC (2012-2013) and a Postdoctoral
-									Research Associate in the Scientific Computing and Imaging Institute at the
-									University of Utah (2013-2014). Since Fall 2014, he has been an Associate Professor
-									in the Department of Civil and Environmental Engineering at the University of
-									Illinois at Urbana-Champaign.</p>
-									
-									
-									<h3 class="major">Graduate students</h3>
-									<p>
-									<li> Vitor Ferreira Grizzi (PhD student)</li>
-									<li> Rini Jasmine Gladstone (PhD student)</li>
-									<li> Tong Liu (PhD Student)</li>
-									<li> Vincent Zhong (PhD student)</li>
-									<li> Yufan Zhang (MS student)</li>
-									<li> Nina Trousdale (Undergraduate researcher)</li>
-									<li> Warren Jidjana (Undergraduate researcher)</li>
-									</p>
-									
-									
+        .navbar .wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100px;
+        }
 
-									<h3 class="major">Previous Group member</h3>
-									<p>
-									<li> <a href="https://mnabian.github.io">Mohammad Amin Nabian</a> (PhD, 2015-2020. Senior Software Engineer, AI-HPC, NVIDIA)</li>
-									<li> Xiyue Li (MS, 2018-2019. Transportation Engineering at  Champaign County Regional Planning Commission)</li>
-									<li> <a href="https://nalemazkoor.wixsite.com/negin">Negin Alemazkoor</a> (PhD, 2014-2019. Assistant Professor at University of Virginia)</li>
-									<li> Xu Wu (PhD co-advisee, 2015-2017. Assistant Professor at NCSU)
-									<li>  Yiyuan Lei (MS, 2018-2019. PhD Student at NYU)
+        .brand { display: flex; align-items: center; }
+        .brand:hover { text-decoration: none; }
+        /* full lockup incl. the "Computational Intelligence for Engineering Lab" line - sized so that line stays legible */
+        .brand img { height: 61px; width: auto; display: block; }
 
-<li> Shiyu Wang (MS, 2017-2018. Industry in China)
+        .navlinks { display: flex; gap: 28px; align-items: center; }
+        .navlinks a {
+            color: var(--ink-2);
+            font-size: 0.95em;
+            font-weight: 500;
+        }
+        .navlinks a:hover { color: var(--accent-text); text-decoration: none; }
+        .navlinks a.active { color: var(--accent-text); font-weight: 700; }
 
-<li>  Yogesh Bhandari (MS co-advisee, 2017)
+        @media (max-width: 720px) {
+            .navlinks { display: none; }
+        }
 
-<li>  Neelotpal Shukla (MS, 2015-2017. Senior Software Engineer at Morningstar)
+        /* ---------- Page header ---------- */
+        .page-header {
+            padding: 64px 0 48px;
+            border-bottom: 1px solid var(--line);
+        }
+        .page-header .kicker {
+            font-family: var(--mono);
+            font-size: 0.8em;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--accent-text);
+            font-weight: 500;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .page-header h1 { font-size: 2.3em; color: var(--ink); letter-spacing: -0.015em; margin-bottom: 12px; }
+        .page-header p { color: var(--muted); max-width: 600px; }
+        .page-header .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 11px 20px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.92em;
+            background: var(--accent);
+            color: var(--ink);
+        }
+        .page-header .btn:hover { background: #F2551B; text-decoration: none; }
 
-<li>  Shengliang Dai (MS co-advisee, 2016)</li>
-									</p>
+        /* ---------- Sections ---------- */
+        .section { padding: 70px 0; }
+        .section.alt { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 
-<h3 class="major">Undergraduate Research Assistants</h3>
-<li>  Bora Ozaltun 
+        .section-head { margin-bottom: 36px; max-width: 700px; }
+        .section-head .kicker {
+            font-family: var(--mono);
+            font-size: 0.8em;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--accent-text);
+            font-weight: 500;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .section-head h2 { font-size: 1.75em; color: var(--ink); margin-bottom: 8px; }
+        .section-head p { color: var(--muted); }
 
-<li>  Aliaa Taha 
+        /* Current members - detailed cards */
+        .member-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+        .member-card {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 22px 20px;
+            text-align: center;
+            box-shadow: 0 1px 2px rgba(16,24,40,0.04);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .member-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+        }
+        .member-avatar {
+            width: 76px;
+            height: 76px;
+            margin: 0 auto 14px;
+            border-radius: 50%;
+            background: var(--bg);
+            border: 1px solid var(--line);
+            color: var(--accent-text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--mono);
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+        .member-name { font-weight: 700; color: var(--ink); margin-bottom: 3px; }
+        .member-role { font-size: 0.85em; color: var(--accent-text); font-weight: 700; margin-bottom: 8px; }
+        .member-focus { font-size: 0.85em; color: var(--muted); }
 
-<li>  Jamil Jamil
+        /* PI card */
+        .pi-card {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 26px;
+            margin-bottom: 36px;
+            box-shadow: 0 1px 2px rgba(16,24,40,0.04);
+        }
+        .pi-card img {
+            width: 120px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid var(--line);
+            flex-shrink: 0;
+        }
+        .pi-card h3 { color: var(--ink); margin-bottom: 4px; }
+        .pi-card .pi-title { color: var(--accent-text); font-weight: 700; font-size: 0.9em; margin-bottom: 10px; }
+        .pi-card p { color: var(--muted); font-size: 0.93em; }
+        .pi-card a { font-weight: 600; }
 
-<li>  Radha Avudaiappan 
+        /* Alumni - compact reference lists */
+        .alumni-columns {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+        .alumni-columns h3 {
+            font-family: var(--mono);
+            font-size: 0.95em;
+            color: var(--ink);
+            margin-bottom: 14px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--line);
+        }
+        .alumni-columns ul { list-style: none; }
+        .alumni-columns li {
+            font-size: 0.9em;
+            color: var(--ink-2);
+            padding: 7px 0;
+            border-bottom: 1px solid var(--line);
+        }
+        .alumni-columns li:last-child { border-bottom: none; }
+        .alumni-columns li a { font-weight: 600; }
 
-<li> Deepak Katariya </li>
+        /* Footer */
+        .footer {
+            background: #F1F0EB;
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            padding: 44px 0 36px;
+            font-size: 0.9em;
+        }
+        .footer a { color: var(--ink); }
+        .footer .wrap {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .footer strong { color: var(--ink); }
+        .footer-logo { height: 58px; width: auto; display: block; margin-bottom: 18px; }
 
+        @media (max-width: 860px) {
+            .alumni-columns { grid-template-columns: 1fr 1fr; }
+        }
 
-									
+        @media (max-width: 600px) {
+            .page-header h1 { font-size: 1.7em; }
+            .navbar .wrap { height: 80px; }
+            .brand img { height: 46px; }
+            .pi-card { flex-direction: column; text-align: center; }
+            .alumni-columns { grid-template-columns: 1fr; }
+        }
 
-								</div>
-							</div>
+        /* ---------- Content scale ----------
+           Everything below the nav bar is drawn at --content-scale (e.g. 0.7 = 30% smaller: fonts,
+           figures, spacing, section heights) while keeping the full content width.
+           Desktop only: scaled-down text would be too small to read on a phone. */
+        @media (min-width: 861px) {
+            body > :not(.navbar) {
+                zoom: var(--content-scale);
+                font-size: calc(100% * var(--content-font-scale));  /* every font size below is in em, so this scales all text */
+            }
+            body > :not(.navbar) .wrap {
+                max-width: calc(1120px / var(--content-scale));
+                padding: 0 calc(24px / var(--content-scale));
+            }
+        }
+    </style>
+</head>
+<body>
 
-					</section>
+    <!-- ============ NAV ============ -->
+    <header class="navbar">
+        <div class="wrap">
+            <a class="brand" href="index.html">
+                <img src="images/ciel2-logo-full.svg" alt="CIEL - Computational Intelligence for Engineering Lab">
+            </a>
+            <nav class="navlinks">
+                <a href="index.html#research">Research</a>
+                <a href="index.html#open-source">Open Source</a>
+                <a href="members.html" class="active">People</a>
+                <a href="index.html#join">Join Us</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
 
+    <!-- ============ PAGE HEADER ============ -->
+    <section class="page-header">
+        <div class="wrap">
+            <span class="kicker">The Team</span>
+            <h1>People</h1>
+            <p>The researchers behind the Computational Intelligence for Engineering Lab — current members and alumni.</p>
+            <a class="btn" href="index.html#join">Interested in joining?</a>
+        </div>
+    </section>
 
-				<!-- Footer -->
-					<section id="footer">
-						<div class="inner">
-							<h2 class="major">Get in touch</h2>
-														<ul class="contact">
-								<li class="fa-home">
-									1211 Newmark Lab<br />
-									205 N Mathews Ave<br />
-									Urbana, IL 61801
-								</li>
-								<li class="fa-phone">(217) 300-0828</li>
-								<li class="fa-envelope"><a href="mailto:meidani@illinois.edu">meidani<at>illinois<dot>edu</a></li>
-								<li class="fa-twitter"><a href="https://twitter.com/hadimeidani">twitter.com/hadimeidani</a></li>
-							</ul>
-							<ul class="copyright">
-								<li>&copy; Uncertainty Quantification Group. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-							</ul>
-						</div>
-					</section>
+    <!-- ============ PI ============ -->
+    <section class="section">
+        <div class="wrap">
+            <div class="pi-card">
+                <img src="images/hadi_meidani.jpg" alt="Hadi Meidani">
+                <div>
+                    <h3>Hadi Meidani</h3>
+                    <div class="pi-title">Principal Investigator, Associate Professor</div>
+                    <p>Department of Civil and Environmental Engineering, University of Illinois at Urbana-Champaign. <a href="index.html#about">Read full bio &rarr;</a></p>
+                </div>
+            </div>
 
-			</div>
+            <div class="section-head">
+                <span class="kicker">Current Group</span>
+                <h2>Current Members</h2>
+            </div>
+            <div class="member-grid">
+                <div class="member-card">
+                    <div class="member-avatar">VZ</div>
+                    <div class="member-name">Vincent Zhong</div>
+                    <div class="member-role">PhD Student</div>
+                    <div class="member-focus">Neural operators, physics-informed learning</div>
+                </div>
+                <div class="member-card">
+                    <div class="member-avatar">MY</div>
+                    <div class="member-name">Mingyue Yu</div>
+                    <div class="member-role">PhD Student</div>
+                    <div class="member-focus">Scientific machine learning</div>
+                </div>
+                <div class="member-card">
+                    <div class="member-avatar">MK</div>
+                    <div class="member-name">Mohammad Hossein Kazemi</div>
+                    <div class="member-role">PhD Student</div>
+                    <div class="member-focus">Uncertainty quantification</div>
+                </div>
+                <div class="member-card">
+                    <div class="member-avatar">AT</div>
+                    <div class="member-name">Ashish Thapa</div>
+                    <div class="member-role">PhD Student</div>
+                    <div class="member-focus">Graph neural networks</div>
+                </div>
+                <div class="member-card">
+                    <div class="member-avatar">YZ</div>
+                    <div class="member-name">Yufan Zhang</div>
+                    <div class="member-role">MS Student</div>
+                    <div class="member-focus">Machine learning for engineering</div>
+                </div>
+                <div class="member-card">
+                    <div class="member-avatar">WJ</div>
+                    <div class="member-name">Warren Jidjana</div>
+                    <div class="member-role">Undergraduate Researcher</div>
+                    <div class="member-focus">Design intelligence</div>
+                </div>
+                <div class="member-card">
+                    <div class="member-avatar">LH</div>
+                    <div class="member-name">Luke Hower</div>
+                    <div class="member-role">Undergraduate Researcher</div>
+                    <div class="member-focus">Network intelligence</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+    <!-- ============ ALUMNI ============ -->
+    <section class="section alt">
+        <div class="wrap">
+            <div class="section-head">
+                <span class="kicker">Where They Are Now</span>
+                <h2>Alumni</h2>
+                <p>Former members of the lab and their current positions.</p>
+            </div>
+            <div class="alumni-columns">
+                <div>
+                    <h3>Former Graduate Students</h3>
+                    <ul>
+                        <li>Rini Jasmine Gladstone (Now at Bayer)</li>
+                        <li>Tong Liu (Now at Uber)</li>
+                        <li>Vitor Ferreira Grizzi (Now at Argonne National Lab)</li>
+                        <li><a href="https://mnabian.github.io">Mohammad Amin Nabian</a> (PhD, 2015&ndash;2020. Senior Software Engineer, AI-HPC, NVIDIA)</li>
+                        <li><a href="https://engineering.virginia.edu/faculty/negin-alemazkoor">Negin Alemazkoor</a> (PhD, 2014&ndash;2019. Assistant Professor at University of Virginia)</li>
+                        <li>Xu Wu (PhD co-advisee, 2015&ndash;2017. Assistant Professor at NCSU)</li>
+                        <li>Xiyue Li (MS, 2018&ndash;2019. Transportation Engineering, Champaign County Regional Planning Commission)</li>
+                        <li>JayaPraneeth Rangamudri (MS, 2025)</li>
+                        <li>Yiyuan Lei (MS, 2018&ndash;2019. PhD Student at NYU)</li>
+                        <li>Shiyu Wang (MS, 2017&ndash;2018. Industry in China)</li>
+                        <li>Yogesh Bhandari (MS co-advisee, 2017)</li>
+                        <li>Neelotpal Shukla (MS, 2015&ndash;2017. Senior Software Engineer at Morningstar)</li>
+                        <li>Shengliang Dai (MS co-advisee, 2016)</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Former Undergraduate Students</h3>
+                    <ul>
+                        <li>Bora Ozaltun</li>
+                        <li>Aliaa Taha</li>
+                        <li>Jamil Jamil</li>
+                        <li>Radha Avudaiappan</li>
+                        <li>Deepak Katariya</li>
+                        <li>Nina Trousdale</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-	</body>
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer" id="contact">
+        <div class="wrap">
+            <div>
+                <img class="footer-logo" src="images/ciel2-logo-full.svg" alt="CIEL - Computational Intelligence for Engineering Lab">
+                <strong>Hadi Meidani</strong><br>
+                Associate Professor<br>
+                Dept. of Civil and Environmental Engineering<br>
+                Siebel Center for Computing and Data Science (Affiliate)<br>
+                Carle Illinois College of Medicine<br>
+                University of Illinois at Urbana-Champaign<br>
+                1211 Newmark Lab, 205 N Mathews Ave, Urbana, IL 61801
+            </div>
+            <div>
+                Email: <a href="mailto:meidani@illinois.edu">meidani@illinois.edu</a><br>
+                Phone: (217) 300-0828<br>
+                <a href="https://scholar.google.com/citations?user=v_gKvdwAAAAJ">Google Scholar</a><br>
+                <a href="https://github.com/uq-group/codes">GitHub</a>
+            </div>
+        </div>
+        <div class="wrap" style="margin-top:20px; font-size:0.85em;">
+            &copy; 2026 Computational Intelligence for Engineering Lab. All rights reserved.
+        </div>
+    </footer>
+
+</body>
 </html>

@@ -1,228 +1,773 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hadi Meidani - Computational Intelligence for Engineering Lab (CIEL)</title>
+    <meta name="description" content="Research group directed by Hadi Meidani at UIUC — AI-driven scientific computing for engineering systems: scientific machine learning, digital twins, uncertainty quantification, neural operators, design optimization, and surrogate-based modeling.">
+    <link rel="icon" type="image/svg+xml" href="images/ciel2-mark.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
+        :root {
+            --bg: #FAFAF7;          /* warm off-white page */
+            --surface: #FFFFFF;     /* cards and alternate bands */
+            --ink: #16181D;         /* headings */
+            --ink-2: #3A3F47;       /* body text */
+            --muted: #6B7280;
+            --line: #E7E5DF;
+            --accent: #FF6B35;      /* fills: buttons, dots, borders */
+            --accent-text: #C2410C; /* deeper orange for text and links - #FF6B35 is too light to read on white */
+            --screen: #0A0E14;      /* research videos stay dark, framed as screens */
+            --mono: 'JetBrains Mono', ui-monospace, monospace;
+            --content-scale: 0.7;   /* size of everything below the nav bar; 1 = original */
+            --content-font-scale: 1.3;   /* extra text size on top of --content-scale; figures and spacing unaffected */
+        }
 
-<html>
-	<head>
-		<title>UQ Group - Hadi Meidani</title>
-		<meta name="google-site-verification" content="..."> 
-		<meta charset="utf-8" />
-		<meta name="description" content="The uncertainty quantification (UQ) research group directed by Hadi Meidani." />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+        html { scroll-behavior: smooth; }
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-86401475-2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--ink-2);
+            background-color: var(--bg);
+            position: relative;
+        }
 
-  gtag('config', 'UA-86401475-2');
-</script>
+        /* Recurring brand motif: faint grid behind all content, inverted for the light page */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background-image:
+                radial-gradient(circle at 1px 1px, rgba(22,24,29,0.09) 1px, transparent 0),
+                linear-gradient(rgba(22,24,29,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(22,24,29,0.03) 1px, transparent 1px);
+            background-size: 46px 46px, 46px 46px, 46px 46px;
+            mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, #000 40%, transparent 100%);
+            -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, #000 40%, transparent 100%);
+        }
 
-	</head>
-	<body class="is-preload">
+        .navbar, .hero, .section, .footer { position: relative; z-index: 1; }
 
-		<!-- Page Wrapper -->
-			<div id="page-wrapper">
+        a { color: var(--accent-text); text-decoration: none; }
+        a:hover { text-decoration: underline; }
 
-				<!-- Header -->
-					<header id="header" class="alt">
-						<h1><a href="index.html">Uncertainty Quantification Group</a></h1>
-						<nav>
-							<a href="#menu">Menu</a>
-						</nav>
-					</header>
+        .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
 
-				<!-- Menu -->
-					<nav id="menu">
-						<div class="inner">
-							<h2>Menu</h2>
-							<ul class="links">
-								<li><a href="index.html">Home</a></li>
-								<!-- <li><a href="publication.html">Publications</a></li> -->
-								<li><a href="members.html">Members</a></li>
-							</ul>
-							<a href="#" class="close">Close</a>
-						</div>
-					</nav>
+        /* ---------- Nav ---------- */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(250,250,247,0.88);
+            backdrop-filter: saturate(180%) blur(10px);
+            border-bottom: 1px solid var(--line);
+        }
 
-				<!-- Banner -->
-					<section id="banner">
-						<div class="inner">
-							<a href="#" class="image"><img src="images/uqlogotransp.png" alt="" /></a>
-							<h2>Uncertainty Quantification Group</h2>
-							<h3>Scientific machine Learning for engineering systems</h3>
-							<h3>Director: Hadi Meidani</h3>
-							<h3>  <font color="cyan"> <a href="https://scholar.google.com/citations?user=v_gKvdwAAAAJ">Google scholar page</a></font> </h3>
-						</div>
-					</section>
+        .navbar .wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100px;
+        }
 
-				<!-- Wrapper -->
-					<section id="wrapper">
+        .brand { display: flex; align-items: center; }
+        .brand:hover { text-decoration: none; }
+        /* full lockup incl. the "Computational Intelligence for Engineering Lab" line - sized so that line stays legible */
+        .brand img { height: 61px; width: auto; display: block; }
 
-						<!-- One -->
+        .navlinks { display: flex; gap: 28px; align-items: center; }
+        .navlinks a {
+            color: var(--ink-2);
+            font-size: 0.95em;
+            font-weight: 500;
+        }
+        .navlinks a:hover { color: var(--accent-text); text-decoration: none; }
 
-							<section id="three" class="wrapper spotlight style3">
-								<div class="inner">
-									<a href="#" class="image"><img src="images/dnn.jpg" alt="" /></a>
-									<div class="content">
-										<h2 class="major">Physics-informed machine learning</h2>
-										<!-- <p>Current/past projects: <br> -->
-										&#8226 Physics-informed geometry-aware neural operators <font color="cyan"> <a href="https://arxiv.org/abs/2408.01600">Link</a></font> <br>
-										&#8226 Physics-informed variational autoencoders for solving stochastic differential equations<br>
-										&#8226 Enhanced training algorithms for physics-informed neural networks
-										</p>
-										<!-- <a href="publication.html" class="special">Learn more</a> -->
-									</div>
-								</div>
-							</section>
-						<!-- Two -->
-							<section id="two" class="wrapper spotlight style1">
-								<div class="inner">
-									<a href="#" class="image"><img src="images/opt.jpg" alt="" /></a>
-									<div class="content">
-										<h2 class="major">Prediction and optimization using AI/ML</h2>
-										<!-- <p>Current/past projects: <br> -->
-										&#8226 Enhanced lung cancer prediction using AI <font color="cyan"> <a href="https://www.medrxiv.org/content/10.1101/2024.10.07.24315011v1">Link</a></font> <br>
-										&#8226 Mesh-based GNNs for accelerated design <font color="cyan"> <a href="https://www.nature.com/articles/s41598-024-53185-y">Link</a></font> <br>
-										&#8226 Structural design under uncertainty with variational autoencoders <font color="cyan"> <a href="https://www.dl.begellhouse.com/journals/558048804a15188a,6ea623526214d90d,32ea8816711ab229.html">Link</a></font><br>	
-										&#8226 Computational control of power systems with uncertain distributed energy sources<br>
-										</p>
-										<!-- <a href="publication.html" class="special">Learn more</a> -->
-									</div>
-								</div>
-							</section>
+        @media (max-width: 720px) {
+            .navlinks { display: none; }
+        }
 
-						<!-- Three -->
+        /* ---------- Hero: headline left, engineering-systems montage right ---------- */
+        .hero {
+            /* height follows the content - a fixed min-height left too much empty space */
+            display: flex;
+            align-items: center;
+            /* no stacking context here: the montage's blend mode has to reach the page grid behind it */
+            z-index: auto;
+        }
 
-							<section id="one" class="wrapper spotlight style1">
-								<div class="inner">
-									<a href="#" class="image"><img src="images/smartcities.jpg" alt="" /></a>
-									<div class="content">
-										<h2 class="major">Predictive analytics for infrastructure systems</h2>
-										<!-- <p>Current/past projects: <br> -->
-										&#8226 Graph neural networks for transportation network modeling<br>   
-										&#8226 Resilience assessment of mobility networks using graph neural networks<br>
-											&#8226 Explainable-AI for long-term traffic prediction<br>
-										  &#8226 Post-disaster online prediction of traffic conditions<br>  
-										<!-- <a href="publication.html" class="special">Learn more</a> -->
-									</div>
-								</div>
-							</section>
+        .hero .wrap {
+            display: grid;
+            grid-template-columns: 1.05fr 1fr;
+            align-items: center;
+            gap: 32px;
+            padding-top: 20px;
+            padding-bottom: 4px;
+        }
 
-						<!-- Three -->
-							<section id="three" class="wrapper spotlight style3">
-								<div class="inner">
-									<a href="#" class="image"><img src="images/cav.jpg" alt="" /></a>
-									<div class="content">
-										<h2 class="major">Intelligent transportation systems</h2>
-										<!-- <p>Current/past projects: <br> -->
-										&#8226 Multifidelity traffic estimation using data from multiple sources<br>
-										&#8226 Efficient data collection algorithm for connective vehicles with precision guarantees
-										</p>
-										<!-- <a href="publication.html" class="special">Learn more</a> -->
-									</div>
-								</div>
-							</section>
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--mono);
+            font-size: 0.82em;
+            letter-spacing: 0.04em;
+            color: var(--accent-text);
+            font-weight: 500;
+            margin-bottom: 14px;
+            padding: 6px 12px;
+            border: 1px solid rgba(255,107,53,0.35);
+            border-radius: 20px;
+            background: rgba(255,107,53,0.07);
+        }
+        .hero-eyebrow::before {
+            content: "";
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            display: inline-block;
+        }
 
+        .hero h1 {
+            font-size: 2.9em;
+            font-weight: 400;
+            line-height: 1.12;
+            letter-spacing: -0.015em;
+            margin-bottom: 10px;
+            color: var(--ink);
+        }
 
+        .hero p.hero-subtitle {
+            font-size: 1.28em;
+            font-weight: 400;
+            color: var(--ink-2);
+            margin-bottom: 10px;
+        }
 
+        .hero p.lede {
+            font-size: 1.02em;
+            color: var(--muted);
+            margin-bottom: 12px;
+        }
 
+        /* research keywords: same mono chip style as the project tags, but neutral gray so they don't compete */
+        .hero-tags {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 4px;
+        }
+        .hero-tags li {
+            font-family: var(--mono);
+            font-size: 0.72em;
+            letter-spacing: 0.02em;
+            color: var(--ink-2);
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            padding: 4px 10px;
+        }
 
-						<!-- Four -->
-							<section id="four" class="wrapper alt style1">
-								<div class="inner">
-									
-									<p><h2 class="major">Available Research Assistant Position</h2>
-									Our <a href="members.html">group </a> has several openings in Fall 2025 for PhD students interested in machine learning and its applications on the modeling and optimization of engineering systems.
-									Higher consideration is given to those who have background in deep learning, numerical methods,
-									and probability and statistics and have excellent programming skills. Interested students should
-									send an email to meidani (at) illinois (dot) edu and attach their CV including their graduate coursework.
-									</p>
-									
-									<h2 class="major">News</h2>
+        /* the research projects continue straight on from the hero as one section, so the
+           research block drops its own big heading and top padding */
+        .section.research-cont { padding-top: 24px; }
+        .research-cont .kicker {
+            display: block;
+            font-family: var(--mono);
+            font-size: 0.8em;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--accent-text);
+            font-weight: 500;
+            margin-bottom: 18px;
+            padding-top: 18px;
+            border-top: 1px solid var(--line);
+        }
 
+        /* the montage is rendered on the page colour; "darken" lets the page's grid texture show
+           through that background, so the objects float with no visible video rectangle */
+        .hero-visual video {
+            width: 75%;
+            margin: 0 auto;
+            aspect-ratio: 3 / 2;   /* frames are 4:3; this crops only empty background top and bottom */
+            object-fit: cover;
+            height: auto;
+            display: block;
+            mix-blend-mode: darken;
+        }
 
+        .btn {
+            display: inline-block;
+            padding: 12px 22px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.95em;
+        }
+        .btn-primary { background: var(--accent); color: var(--ink); }
+        .btn-primary:hover { background: #F2551B; color: var(--ink); text-decoration: none; }
+        .btn-ghost { border: 1px solid #CFCBC2; color: var(--ink); background: var(--surface); }
+        .btn-ghost:hover { border-color: var(--ink); text-decoration: none; }
 
-<p> 
+        /* ---------- Sections ---------- */
+        .section { padding: 84px 0; }
+        .section.alt { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 
+        .section-head { margin-bottom: 40px; max-width: 700px; }
+        .section-head .kicker {
+            font-family: var(--mono);
+            font-size: 0.8em;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--accent-text);
+            font-weight: 500;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .section-head h2 { font-size: 1.95em; color: var(--ink); letter-spacing: -0.01em; margin-bottom: 10px; }
+        .section-head p { color: var(--muted); }
 
-	
-<li>[Sep 2023] Our collaborative project with Fermilab on using graph neural networks for neutrino experiments are funded. 
+        /* About / bio */
+        .about { display: flex; gap: 40px; align-items: flex-start; }
+        .about-photo img {
+            width: 190px;
+            height: 230px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 1px solid var(--line);
+        }
+        .about-text { flex: 1; }
+        .about-text p { margin-bottom: 14px; }
 
-<li>[Sep 2023] Our submission to ICMLA 2023 Conference on Graph Pyramid Autoformer for Long-Term Traffic Forecasting has been accepted. This was a collaboration with Argonne National Lab and Lawrence Berkeley National Lab. Congrats to Vincent for leading the effort!
+        /* Research - full-width project rows: white cards, dark video "screens" */
+        .project-row {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            overflow: hidden;
+            margin-bottom: 28px;
+            box-shadow: 0 1px 2px rgba(16,24,40,0.04), 0 8px 24px rgba(16,24,40,0.04);
+        }
+        .project-row:last-of-type { margin-bottom: 0; }
+        .project-media {
+            flex: 0 0 42%;
+            height: 320px;
+            background: var(--screen);
+        }
+        .project-media img,
+        .project-media video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .project-media video {
+            object-fit: contain;
+        }
+        .project-body { flex: 1; padding: 30px 36px 30px 0; }
+        .project-tag {
+            display: inline-block;
+            font-family: var(--mono);
+            font-size: 0.95em;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--accent-text);
+            background: rgba(255,107,53,0.08);
+            border: 1px solid rgba(255,107,53,0.3);
+            padding: 6px 14px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+        .project-body h3 { font-size: 1.3em; color: var(--ink); margin-bottom: 12px; }
+        .project-body p { margin-bottom: 16px; }
+        .project-body p strong { color: var(--ink); }  /* the card's title, folded into its sentence */
+        .project-cite {
+            font-size: 0.85em;
+            color: var(--muted);
+            padding-top: 14px;
+            border-top: 1px solid var(--line);
+        }
+        .project-cite a { font-weight: 600; }
 
-<li>[Aug 2023] Vincent will present two papers on traffic prediction at 2023 INFORMS Annual Meeting. 
-	
-<li>[Oct 2022] Our submission to NeurIPS Workshop on Machine Learning and the Physical Sciences has been accepted. Congrats to Rini Gladstone and Mohammad Nabian!
-	
-<li>[Oct 2022] Our group is invited to present at Nvidia's introductory webinar on Physics-ML <a href="https://info.nvidia.com/developer-physics-informed-machine-learning-with-modulus-webinar.html">Link to the free webinar</a>. . Rini will present our collaborative work with Nvidia on how to enforce exact boundary conditions for PINNs. 
-	
-<li>[May 2022] Rini is selected as a Research Scientist Intern at Meta to work on physics-based machine learning research! 	
-	
-<li>[May 2022] Vincent is selected as a Givens Associate in the Mathmatics and Computer Science Division at Argonne National Labs, and will spend a summer there doing research on long-term traffic prediction. 	
+        .project-row.reverse { flex-direction: row-reverse; }
+        .project-row.reverse .project-body { padding: 30px 0 30px 36px; }
 
-<li>[Jun 2020] Negin has accepted a Tenure-track Assistant Professor position in the Department of Engineering Systems and Environment at the University of Virginia. 
+        .see-all { margin-top: 32px; text-align: center; }
+        .see-all a { font-weight: 600; }
 
-<li> [May 2020] Dr. Meidani has received a research grant to investigate optimal pooled testing strategies for COVID-19 community screening. 
+        /* Recent publications: figure thumbnail + citation, one per row */
+        .pub-list { display: flex; flex-direction: column; gap: 18px; }
+        .pub {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 28px;
+            align-items: center;
+            background: var(--bg);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 18px;
+        }
+        .pub-fig {
+            height: 150px;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .pub-fig img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
+        .pub-fig.placeholder { font-family: var(--mono); font-size: 0.78em; color: var(--muted); letter-spacing: 0.04em; }
+        .pub-title { font-size: 1.08em; font-weight: 700; line-height: 1.4; margin-bottom: 6px; }
+        .pub-title a { color: var(--ink); }
+        .pub-title a:hover { color: var(--accent-text); }
+        .pub-authors { font-size: 0.92em; margin-bottom: 4px; }
+        .pub-authors strong { color: var(--ink); }
+        .pub-venue { font-size: 0.88em; color: var(--muted); font-style: italic; }
+        .pub-venue .year {
+            font-style: normal;
+            font-family: var(--mono);
+            color: var(--accent-text);
+            margin-left: 6px;
+        }
 
-<li>[Apr 2020] Negin's first author paper on fast surrogate-based voltage control for distribution energy systems have been published on IEEE Access.
+        /* Open source strip (sits on the off-white page, so cards are white) */
+        .oss-strip {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .oss-card {
+            display: block;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 22px;
+            color: var(--ink-2);
+            transition: border-color 0.2s ease;
+        }
+        .oss-card:hover { border-color: var(--accent); text-decoration: none; }
+        .oss-card-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-family: var(--mono);
+            color: var(--ink);
+            font-weight: 700;
+            font-size: 0.98em;
+        }
+        .oss-card-head svg { flex-shrink: 0; opacity: 0.85; }
+        .oss-card p { color: var(--muted); font-size: 0.88em; }
 
-<li>[Feb 2020] Our team won the First Prize in the Data Challenge on Urban Travel Time, Speed, and Reliability at the 2020 TRB Annual Meeting. Congratulations to our graduate students Xiyue and Mohammad! 
+        /* People strip */
+        .people-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 18px;
+        }
+        .person { text-align: center; }
+        .person-avatar {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 10px;
+            border-radius: 50%;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            color: var(--accent-text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--mono);
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+        .person-name { font-size: 0.9em; font-weight: 700; color: var(--ink); }
+        .person-role { font-size: 0.8em; color: var(--muted); }
 
-<li>[May 2019] Mohammad Amin Nabian has been awarded the Dissertation Completion Fellowship from the Graduate College. Congratulations to Mohammad on this prestigious recognition.
+        /* Join us */
+        .cta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        .join-banner {
+            background: var(--bg);  /* sits on a white band */
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 38px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 24px;
+            height: 100%;
+            box-shadow: 0 1px 2px rgba(16,24,40,0.04), 0 8px 24px rgba(16,24,40,0.04);
+        }
+        .join-banner .project-tag { margin-bottom: 14px; }
+        .join-banner h2 { font-size: 1.4em; color: var(--ink); margin-bottom: 10px; }
+        .join-banner p { color: var(--ink-2); }
+        .join-banner .btn { align-self: flex-start; }
 
-<li>[Apr 2019] Mohammad Amin Nabian has been selected by UIUC College of Engineering as one of the Mavis Future Faculty Fellows (MF3) for the 2019-2020 academic year. More on the fellowship program can be
-found <a href="http://publish.illinois.edu/engr-mavis/">here</a>. Congrats to Mohammad!<br>
+        /* Footer */
+        .footer {
+            background: #F1F0EB;
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            padding: 44px 0 36px;
+            font-size: 0.9em;
+        }
+        .footer a { color: var(--ink); }
+        .footer .wrap {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .footer strong { color: var(--ink); }
+        .footer-logo { height: 58px; width: auto; display: block; margin-bottom: 18px; }
 
-<li>[Mar 2019] Negin Alemazkoor has been selected as one of the <a href="https://risingstars.ices.utexas.edu">Rising Stars</a> in Computational and Data Sciences and will attend an event sponsored by the University of Texas at Austin and Sandia National Labs in April 2019. Congratulations to Negin!<br>
+        @media (max-width: 860px) {
+            .hero .wrap { grid-template-columns: 1fr; }
+            .project-row, .project-row.reverse { flex-direction: column; }
+            .project-media { flex: none; width: 100%; height: 240px; }
+            .project-body, .project-row.reverse .project-body { padding: 24px 24px 28px; }
+            .oss-strip { grid-template-columns: 1fr; }
+            .pub { grid-template-columns: 1fr; }
+            .pub-fig { height: 180px; }
+        }
 
-<li>[Nov 2018] Our group’s entry to the 2018 INFORMS Rail Problem Competition won the 2nd Place Prize. Congratulations to Mohammad and Negin. <a href="https://cee.illinois.edu/news/cee-team-places-second-international-competition">Full story</a>.<br>
+        @media (max-width: 700px) {
+            .cta-grid { grid-template-columns: 1fr; }
+        }
 
-<li>[Aug 2018] Our journal paper on preconditioning for improved compressive sampling of polynomial surrogates is accepted for publication in Computational Methods in Applied Mechanics and Engineering. Congratulations to Negin.<br>
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 1.9em; }
+            .about { flex-direction: column; align-items: center; text-align: center; }
+            .navbar .wrap { height: 80px; }
+            .brand img { height: 46px; }
+        }
 
-<li>[Jul 2018] Our conference paper on recursive data-driven prediction of traffic flow with faulty sensors is accepted for presentation at the 2018 IEEE International Conference on Intelligent Transportation Systems (IEEE ITSC 2018). Congratulations to Negin and Shiyu.<br>
+        /* ---------- Content scale ----------
+           Everything below the nav bar is drawn at --content-scale (e.g. 0.7 = 30% smaller: fonts,
+           figures, spacing, section heights) while keeping the full content width.
+           Desktop only: scaled-down text would be too small to read on a phone. */
+        @media (min-width: 861px) {
+            body > :not(.navbar) {
+                zoom: var(--content-scale);
+                font-size: calc(100% * var(--content-font-scale));  /* every font size below is in em, so this scales all text */
+            }
+            body > :not(.navbar) .wrap {
+                max-width: calc(1120px / var(--content-scale));
+                padding: 0 calc(24px / var(--content-scale));
+            }
+        }
+    </style>
+</head>
+<body>
 
-<li>[Feb 2018] Dr. Meidani receives NSF CAREER Award to study fast and accurate software tools for interdependent infrastructure systems. <a href="https://cee.illinois.edu/news/meidani-wins-nsf-career-award">Full story</a>.<br>
-</li> </p>
-								</div>
-							</section>
+    <!-- ============ NAV ============ -->
+    <header class="navbar">
+        <div class="wrap">
+            <a class="brand" href="index.html">
+                <img src="images/ciel2-logo-full.svg" alt="CIEL - Computational Intelligence for Engineering Lab">
+            </a>
+            <nav class="navlinks">
+                <a href="#research">Research</a>
+                <a href="#open-source">Open Source</a>
+                <a href="members.html">People</a>
+                <a href="#join">Join Us</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
 
-					</section>
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+        <div class="wrap">
+            <div class="hero-text">
+                <span class="hero-eyebrow">Hadi Meidani's Lab &middot; UIUC</span>
+                <h1>Computational Intelligence</h1>
+                <p class="hero-subtitle">AI-driven scientific computing for engineering systems.</p>
+                <p class="lede">We combine machine learning with physics-based modeling to develop computationally efficient, physically meaningful, and interpretable methods that accelerate engineering design, build digital twins for infrastructure, and advance physics simulation.</p>
+                <ul class="hero-tags" aria-label="Research areas">
+                    <li>Scientific ML</li>
+                    <li>Digital Twins</li>
+                    <li>Uncertainty Quantification</li>
+                    <li>Neural Operators</li>
+                    <li>Design Optimization</li>
+                    <li>Surrogate-based Modeling</li>
+                </ul>
+            </div>
+            <div class="hero-visual">
+                <!-- Montage of engineering systems: vehicle aerodynamics, aircraft, structural bracket, traffic network -->
+                <video autoplay muted loop playsinline aria-label="Rotating simulations of a car, an aircraft, a structural bracket, and a city traffic network">
+                    <source src="assets/video/hero-montage.mp4" type="video/mp4">
+                    <source src="assets/video/hero-montage.webm" type="video/webm">
+                </video>
+            </div>
+        </div>
+    </section>
 
-				<!-- Footer -->
-					<section id="footer">
-						<div class="inner">
-							<h2 class="major">Get in touch</h2>
-														<ul class="contact">
-								<li class="fa-home">
-									Hadi Meidani<br />
-									1211 Newmark Lab<br />
-									205 N Mathews Ave<br />
-									Urbana, IL 61801
-								</li>
-								<li class="fa-phone">(217) 300-0828</li>
-								<li class="fa-envelope"><a href="mailto:meidani@illinois.edu">meidani (at) illinois (dot) edu</a></li>
-								<li class="fa-twitter"><a href="https://twitter.com/hadimeidani">twitter.com/hadimeidani</a></li>
-							</ul>
-							<ul class="copyright">
-								<li>&copy; Uncertainty Quantification Group. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-							</ul>
-						</div>
-					</section>
+    <!-- ============ RESEARCH ============ -->
+    <!-- continues directly from the hero: its intro sentence moved up into the hero text -->
+    <section class="section research-cont" id="research">
+        <div class="wrap">
+            <span class="kicker">Research</span>
 
-			</div>
+            <div class="project-row">
+                <div class="project-media">
+                    <video autoplay muted loop playsinline>
+                        <source src="assets/video/car-comparison.mp4" type="video/mp4">
+                        <source src="assets/video/car-comparison.webm" type="video/webm">
+                    </video>
+                </div>
+                <div class="project-body">
+                    <span class="project-tag">Design Intelligence</span>
+                    <p><strong>AI surrogates for vehicle design</strong> predict the full surface pressure over a vehicle body, matching high-fidelity CFD down to fine detail around the side mirror and windshield.</p>
+                    <div class="project-cite">
+                        Ground truth (CFD simulation) vs. AI-predicted surface pressure (Cp).
+                    </div>
+                </div>
+            </div>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+            <div class="project-row reverse">
+                <div class="project-media">
+                    <video autoplay muted loop playsinline>
+                        <source src="assets/video/siouxfalls-flythrough.mp4" type="video/mp4">
+                        <source src="assets/video/siouxfalls-flythrough.webm" type="video/webm">
+                    </video>
+                </div>
+                <div class="project-body">
+                    <span class="project-tag">Network Intelligence</span>
+                    <p><strong>Traffic network digital twins</strong> built on end-to-end heterogeneous graph neural networks deliver real-time traffic assignment and transportation network analysis.</p>
+                    <div class="project-cite">
+                        Ground truth (real equilibrium flow) vs. AI-predicted congestion on the classic Sioux Falls benchmark network (76 links).<br>
+                        <a href="https://www.sciencedirect.com/science/article/pii/S0045782524001231">Liu, Meidani &middot; "End-to-end heterogeneous graph neural networks for traffic assignment" &middot; Transportation Research Part C, 2024</a>
+                    </div>
+                </div>
+            </div>
 
-	</body>
+            <div class="project-row">
+                <div class="project-media">
+                    <video autoplay muted loop playsinline>
+                        <source src="assets/video/valve-comparison.mp4" type="video/mp4">
+                        <source src="assets/video/valve-comparison.webm" type="video/webm">
+                    </video>
+                </div>
+                <div class="project-body">
+                    <span class="project-tag">Physics-based Intelligence</span>
+                    <p><strong>AI surrogates for mitral valve dynamics</strong> predict the deforming leaflet surface through the closing cycle, closely matching finite-element simulation.</p>
+                    <div class="project-cite">
+                        Ground truth (FE simulation) vs. AI-predicted surface, colored by displacement magnitude from rest.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ RECENT PUBLICATIONS ============ -->
+    <section class="section alt" id="publications">
+        <div class="wrap">
+            <div class="section-head">
+                <span class="kicker">Latest Work</span>
+                <h2>Recent Publications</h2>
+            </div>
+            <div class="pub-list">
+                <div class="pub">
+                    <div class="pub-fig"><img src="images/pubs/mre-unt.png" alt="Liver geometry in the finite element domain and the resulting MRE displacement fields" loading="lazy"></div>
+                    <div>
+                        <div class="pub-title"><a href="https://scholar.google.com/scholar?q=%22A+U-Net+Transformer+for+magnetic+resonance+elastography%22">A U-Net Transformer for magnetic resonance elastography</a></div>
+                        <div class="pub-authors">W. Zhong, M. W. Urban, <strong>H. Meidani</strong></div>
+                        <div class="pub-venue">International Journal of Computer Assisted Radiology and Surgery<span class="year">2026</span></div>
+                    </div>
+                </div>
+                <div class="pub">
+                    <div class="pub-fig"><img src="images/pubs/pgd-no.png" alt="3D industrial benchmarks used to evaluate PGD-NO: heat sink, bracket, aircraft and car" loading="lazy"></div>
+                    <div>
+                        <div class="pub-title"><a href="https://arxiv.org/abs/2607.08025">[ICML2026] PGD-NO: A Neural Operator with Precomputed Geometry Decomposition for 3D Million-scale Physics Simulations</a></div>
+                        <div class="pub-authors">W. Zhong, J. Bi, V. Oancea, <strong>H. Meidani</strong></div>
+                        <div class="pub-venue">arXiv preprint arXiv:2607.08025<span class="year">2026</span></div>
+                    </div>
+                </div>
+                <div class="pub">
+                    <div class="pub-fig"><img src="images/pubs/s-not.png" alt="3D lug specimen with its finite element mesh and time-dependent loading" loading="lazy"></div>
+                    <div>
+                        <div class="pub-title"><a href="https://www.sciencedirect.com/science/article/pii/S0952197626007098">Sequential neural operator transformer for high-fidelity surrogates of time-dependent non-linear partial differential equations</a></div>
+                        <div class="pub-authors">Q. Liu, W. Zhong, S. Koric, <strong>H. Meidani</strong></div>
+                        <div class="pub-venue">Engineering Applications of Artificial Intelligence<span class="year">2026</span></div>
+                    </div>
+                </div>
+                <div class="pub">
+                    <div class="pub-fig"><img src="images/pubs/ginot.png" alt="Predicted stress solutions on bracket lugs" loading="lazy"></div>
+                    <div>
+                        <div class="pub-title"><a href="https://www.sciencedirect.com/science/article/pii/S0045782525009405">Geometry-informed neural operator transformer for partial differential equations on arbitrary geometries</a></div>
+                        <div class="pub-authors">Q. Liu, W. Zhong, <strong>H. Meidani</strong>, D. Abueidda, S. Koric, P. Geubelle</div>
+                        <div class="pub-venue">Computer Methods in Applied Mechanics and Engineering<span class="year">2026</span></div>
+                    </div>
+                </div>
+                <div class="pub">
+                    <div class="pub-fig"><img src="images/pubs/nugraph2.png" alt="Graph connectivity of detector hits across the three wire planes" loading="lazy"></div>
+                    <div>
+                        <div class="pub-title"><a href="https://arxiv.org/abs/2509.10684">NuGraph2 with context-aware inputs: physics-inspired improvements in semantic segmentation</a></div>
+                        <div class="pub-authors">V. F. Grizzi, M. Voetberg, V. Hewes, G. Cerati, <strong>H. Meidani</strong></div>
+                        <div class="pub-venue">Journal of High Energy Physics<span class="year">2026</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="see-all">
+                <a href="https://scholar.google.com/citations?user=v_gKvdwAAAAJ&amp;hl=en">View all publications &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ OPEN SOURCE ============ -->
+    <section class="section" id="open-source">
+        <div class="wrap">
+            <div class="section-head">
+                <span class="kicker">Proof of Work</span>
+                <h2>Open Source</h2>
+                <p>Code from our published research, released for the community to build on.</p>
+            </div>
+            <div class="oss-strip">
+                <a class="oss-card" href="https://github.com/uq-group/codes">
+                    <div class="oss-card-head">
+                        <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+                        uq-group/codes
+                    </div>
+                    <p>Central repository of research code released alongside our publications — surrogate models, PINNs, and GNN implementations.</p>
+                </a>
+                <a class="oss-card" href="https://github.com/WeihengZ/PGD-NO">
+                    <div class="oss-card-head">
+                        <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+                        WeihengZ/PGD-NO
+                    </div>
+                    <p>Official implementation of PGD-NO (ICML 2026), a neural operator with precomputed geometry decomposition for 3D million-scale physics simulations.</p>
+                </a>
+                <a class="oss-card" href="https://github.com/WeihengZ/FC4NO/tree/main">
+                    <div class="oss-card-head">
+                        <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+                        WeihengZ/FC4NO
+                    </div>
+                    <p>A fair comparison of neural operator architectures — point-, grid-, graph-, and branch-trunk-based — on 3D real-world engineering problems, with pretrained models.</p>
+                </a>
+                <a class="oss-card" href="https://github.com/uq-group/codes/tree/main/NO4MRE">
+                    <div class="oss-card-head">
+                        <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+                        uq-group/codes · NO4MRE
+                    </div>
+                    <p>A benchmark for neural operators on magnetic resonance elastography (MRE) inversion, with high-fidelity FEniCSx simulations and data-driven and physics-informed baselines.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section alt" id="about">
+        <div class="wrap about">
+            <div class="about-text">
+                <div class="section-head" style="margin-bottom: 18px;">
+                    <span class="kicker">Principal Investigator</span>
+                    <h2>Hadi Meidani</h2>
+                </div>
+                <p>Dr. Meidani an Associate Professor in the Department of Civil and Environmental Engineering, and Department of Biomedical &amp; Translational Sciences at the University of Illinois at Urbana-Champaign. He got my Ph.D. in Civil Engineering from USC under the advice of Prof. Roger Ghanem. He also got a M.Sc. in Electrical Engineering from USC, a M.S. in Structural Engineering from Sharif University of Technology, and a B.S. in Civil Engineering from K.N. Toosi University of Technology. Prior to joining UIUC, he was a postdoctoral scholar in the Department of Aerospace and Mechanical Engineering at USC and in the Scientific Computing and Imaging Institute at the University of Utah. Dr. Meidani is the Chair of the Machine Learning Committee of the ASCE Engineering Mechanics Institute. He is the recipient of an NSF CAREER Award on fast computational models for infrastructure networks. His team have won awards from data competitions on railroad engineering and his research has been sponsored by federal agencies such as National Science Foundation (NSF), DOE, and DOT.</p>
+            </div>
+            <div class="about-photo">
+                <img src="images/hadi_meidani.jpg" alt="Hadi Meidani">
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ PEOPLE ============ -->
+    <section class="section">
+        <div class="wrap">
+            <div class="section-head">
+                <span class="kicker">The Team</span>
+                <h2>Current Members</h2>
+            </div>
+            <div class="people-grid">
+                <div class="person"><div class="person-avatar">VZ</div><div class="person-name">Vincent Zhong</div><div class="person-role">PhD Student</div></div>
+                <div class="person"><div class="person-avatar">MY</div><div class="person-name">Mingyue Yu</div><div class="person-role">PhD Student</div></div>
+                <div class="person"><div class="person-avatar">MK</div><div class="person-name">M.H. Kazemi</div><div class="person-role">PhD Student</div></div>
+                <div class="person"><div class="person-avatar">AT</div><div class="person-name">Ashish Thapa</div><div class="person-role">PhD Student</div></div>
+                <div class="person"><div class="person-avatar">YZ</div><div class="person-name">Yufan Zhang</div><div class="person-role">MS Student</div></div>
+                <div class="person"><div class="person-avatar">WJ</div><div class="person-name">Warren Jidjana</div><div class="person-role">Undergrad</div></div>
+                <div class="person"><div class="person-avatar">LH</div><div class="person-name">Luke Hower</div><div class="person-role">Undergrad</div></div>
+            </div>
+            <div class="see-all">
+                <a href="members.html">Meet the full team &amp; alumni &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ JOIN US ============ -->
+    <section class="section alt" id="join">
+        <div class="wrap">
+            <div class="cta-grid">
+                <div class="join-banner">
+                    <div>
+                        <span class="project-tag">For Students</span>
+                        <h2>Join the Lab</h2>
+                        <p>We're looking for motivated students to work on cutting-edge research in scientific machine learning and uncertainty quantification. Apply through the CEE department and mention my name, or email your CV and research interests directly.</p>
+                    </div>
+                    <a class="btn btn-primary" href="mailto:meidani@illinois.edu?subject=Prospective Student Inquiry">Get in Touch</a>
+                </div>
+                <div class="join-banner">
+                    <div>
+                        <span class="project-tag">For Industry</span>
+                        <h2>Partner With Us</h2>
+                        <p>We collaborate with industry on applied scientific machine learning — sponsored research, technology licensing, and joint projects translating our methods into production systems.</p>
+                    </div>
+                    <a class="btn btn-primary" href="mailto:meidani@illinois.edu?subject=Industry Partnership Inquiry">Get in Touch</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer" id="contact">
+        <div class="wrap">
+            <div>
+                <img class="footer-logo" src="images/ciel2-logo-full.svg" alt="CIEL - Computational Intelligence for Engineering Lab">
+                <strong>Hadi Meidani</strong><br>
+                Associate Professor<br>
+                Dept. of Civil and Environmental Engineering<br>
+                Siebel Center for Computing and Data Science (Affiliate)<br>
+                Carle Illinois College of Medicine<br>
+                University of Illinois at Urbana-Champaign<br>
+                1211 Newmark Lab, 205 N Mathews Ave, Urbana, IL 61801
+            </div>
+            <div>
+                Email: <a href="mailto:meidani@illinois.edu">meidani@illinois.edu</a><br>
+                Phone: (217) 300-0828<br>
+                <a href="https://scholar.google.com/citations?user=v_gKvdwAAAAJ">Google Scholar</a><br>
+                <a href="https://github.com/uq-group/codes">GitHub</a>
+            </div>
+        </div>
+        <div class="wrap" style="margin-top:20px; font-size:0.85em;">
+            &copy; 2026 Computational Intelligence for Engineering Lab. All rights reserved.
+        </div>
+    </footer>
+
+</body>
 </html>

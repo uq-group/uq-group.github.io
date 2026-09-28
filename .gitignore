@@ -1,0 +1,56 @@
+# Mitral Valve Data Files - DO NOT COMMIT
+# These files contain sensitive research data and should not be in the repository
+
+mitral_valve/data/
+mitral_valve/data/*.json
+
+# But keep the directory structure
+!mitral_valve/data/.gitkeep
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Environment variables
+.env
+*.env
+
+# API keys and secrets
+*_key.txt
+*_secret.txt
+secrets/
+
+# Logs
+*.log
+
+
+
+# Local-only backup of the dark-theme design - never commit
+_backup_dark_theme/
+
+# ---- Source data behind the site's videos and figures: keep local, never publish ----
+icml_examples/
+mitral_valve_3samples/
+mitral_valve/
+traffic_anaheim/
+traffic_siouxfalls/
+*.mat
+*.vtk
+*.vtu
+*.vtp
+*.parquet
+*.npy
+*.inp
+mre_journal.pdf
+citations.csv
+
+# unused video prototypes (fabricated-city and Anaheim renders)
+assets/video/prototype/
+
+# old page versions and local tooling
+index_v1.html
+old_index.html
+old_index_UQ.html
+.claude/
+.DS_Store
